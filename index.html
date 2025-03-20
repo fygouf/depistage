@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Random Text</title>
+    <style>
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                opacity: 0.5;
+            }
+        }
+
+        .flicker {
+            color: red;
+            animation: flicker 1.5s infinite;
+        }
+    </style>
+    <script>
+        function getRandomText() {
+            const texts = ["texta", "textb"];
+            const randomIndex = Math.floor(Math.random() * texts.length);
+            return texts[randomIndex];
+        }
+
+        window.onload = function() {
+            const randomText = getRandomText();
+            const textElement = document.getElementById("randomText");
+            textElement.innerText = randomText;
+
+            if (randomText === "textb") {
+                textElement.classList.add("flicker");
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <h1 id="randomText">Loading...</h1>
 </body>
 </html>
